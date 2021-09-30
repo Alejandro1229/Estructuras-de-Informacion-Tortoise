@@ -1,4 +1,4 @@
-package tallern3;
+package taller3;
 
 
 public class Funciones {
