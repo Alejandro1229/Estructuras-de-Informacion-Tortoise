@@ -1,4 +1,4 @@
-package co.edu.ucundinamarca.taller4;
+package co.edu.ucundinamarca.Taller4;
 
 public class Lista {
     private Nodo cabeza = null;

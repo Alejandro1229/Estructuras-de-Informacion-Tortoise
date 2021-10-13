@@ -1,35 +1,72 @@
-package co.edu.ucundinamarca.taller4;
+package co.edu.ucundinamarca.Taller4;
 
 
-import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import java.util.Scanner;
 
 public class Dulces {
 
-    public static void main (String[] args){
+    static Logger log = Logger.getLogger(Dulces.class.getName());
 
-        ArrayList<String>cadenas;
+    Nodo primero;
+    Nodo ultimo;
 
-        cadenas = new ArrayList<String>();
+    public Dulces(){
+        primero = null;
+        ultimo = null;
+    }
 
-        cadenas.add("ChocoRamo");
-        cadenas.add("Frunas");
-        cadenas.add("SuperCoco");
+    public void imprimirIterando(String dulce){
 
-        //recorrer ArrayList
+        Nodo nuevoNodo = new Nodo();
 
-        for (int i = 0; i <cadenas.size(); i++){
-            System.out.println("->"+cadenas.get(i));
+        nuevoNodo.dulce = dulce;
+
+        if(primero == null){
+            primero = nuevoNodo;
+            primero.siguiente = null;
+            ultimo = primero;
+        }else {
+            ultimo.siguiente = nuevoNodo;
+            nuevoNodo.siguiente = null;
+            ultimo = nuevoNodo;
         }
 
-        /*
-        cadenas.remove(i); //Eliminar Elementos
+    }
+    public void mostrarLista(){
+        Nodo actual = new Nodo();
 
-        for (int i = 0; i <cadenas.size(); i++){
-            System.out.println("->"+cadenas.get(i));
+        actual = primero;
+
+        while(actual != null){
+            log.debug(actual.dulce);
+            actual = actual.siguiente;
         }
-        */
 
 
+    }
+
+
+
+
+
+    public static int imprimirSinIterador(String letras, int indice){
+
+        Scanner intr = new Scanner(System.in);
+
+        String[] dulces = new String[10];
+
+        for(int i = 0; i < indice; i++){
+            log.debug("Digite el dulce numero " + (i + 1));
+            dulces[i] = intr.next();
+        }
+        log.debug("Los dulces son: ");
+
+        for(int i = 0; i < indice; i++){
+            log.debug(dulces[i] + " ");
+        }
+
+        return indice;
     }
 
 
